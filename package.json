@@ -1,4 +1,11 @@
 {
+  "name": "onephoto",
+  "version": "0.1.0",
+  "description": "A Node app with SQLite database, instantly up and running.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
@@ -8,7 +15,10 @@
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",
-    "sqlite": "^4.1.2",
+    "sqlite": "^4.2.0",
     "sqlite3": "^5.1.6"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }

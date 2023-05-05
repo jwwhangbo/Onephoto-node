@@ -3,7 +3,7 @@ const app = express();
 const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 
-const port = process.env.port || 3306 ;
+const PORT = process.env.PORT || 3000 ;
 
 const seo = require("./src/seo.json");
 if (seo.url === "glitch-default") {
@@ -28,4 +28,4 @@ app.get('/', (req, res) => {
     res.redirect('/register');
 })
 
-app.listen(port, () => console.log("listening on port ", port));
+app.listen(PORT, () => console.log("listening on port ", PORT));
