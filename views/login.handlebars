@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Welcome to OnePhoto!</h1>
+        <h2>Login</h2>
+        <p>Please fill in your credentials to login.</p>
+        <!-- htmlspecialchars is a built-in PHP function to convert special characters to HTML entities.
+        $_SERVER is an array built into PHP containing information such as headers, paths, and script 
+        locations. The entries in this array are created by the web server. With $_SERVER["PHP_SELF"] we
+        are echoing the complete path, including all parameters, to our site. PHP_SELF is a variable that 
+        returns the name and path of the current file (from the root folder). However, without htmlspcialchars 
+        we would have an XSS vulnerability (see https://www.webadminblog.com/index.php/2010/02/23/a-xss-vulnerability-in-almost-every-php-form-ive-ever-written/).
+        Various errors related to the user-entered strings (or omissions of those) are echoed to the
+        output of the form for the user to see. -->
+        <form action="/login" method="post">
+            <div class="form-group {{#if loginTemplate.username_err}}has-error{{else}}{{/if}}">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" value={{loginTemplate.username}}>
+                <span class="help-block">{{loginTemplate.username_err}}</span>
+            </div>
+            <div class="form-group {{#if loginTemplate.password_err}}has-error{{else}}{{/if}}">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control">
+                <span class="help-block">{{loginTemplate.password_err}}</span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Login">
+            </div>
+            <p>Don't have an account? <a href="/register">Sign up now</a>.</p>
+        </form>
+    </div>
+</body>
+</html>
