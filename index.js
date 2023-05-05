@@ -5,11 +5,6 @@ const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 3000 ;
 
-const seo = require("./src/seo.json");
-if (seo.url === "glitch-default") {
-  seo.url = `https://${process.env.PROJECT_DOMAIN}.glitch.me`;
-}
-
 require('dotenv').config();
 
 app.engine('handlebars', exphbs.engine({ defaultLayout : false }));
