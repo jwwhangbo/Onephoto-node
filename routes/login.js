@@ -41,6 +41,12 @@ router.post('/', async (req, res) => {
     else {
         const new_user = new user(_.get(value,'username'), _.get(value,'password'));
         new_user.authenticate( async (err, result) => {
+            if (err) {
+                resetErrorMessages();
+                loginTemplate.username_err = 'no user found';
+                res.render('login', {loginTemplate});
+                return;
+            }
             if (result) {
                 const token = await new_user.genToken();
                 res.cookie('token',token, { httpOnly: true, maxAge: 3600000 });
